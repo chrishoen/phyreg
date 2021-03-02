@@ -302,9 +302,11 @@ int main(int argc, char **argv) {
 				int phy_bit = atoi( argv[3] );				
 				
 				if ( readreg( OFFSET_PTR( mdiobase , MDIO_USERACCESS0_OFFSET) , phy_address , phy_reg ) & (1<<phy_bit) ) {
-					fprintf( stdout ,"1\n");
+					//fprintf( stdout ,"1\n");
+					fprintf( stderr ,"1\n");
 				} else {
-					fprintf( stdout ,"0\n");
+					//fprintf( stdout ,"0\n");
+					fprintf( stderr ,"0\n");
 				}
 			}
 			
