@@ -279,7 +279,7 @@ int main(int argc, char **argv) {
 			
 			unsigned alivebits =  *OFFSET_PTR( mdiobase , MDIO_ALIVE_OFFSET );
 			
-			fprintf( stderr , "Alive bits:");			
+			fprintf( stderr , "Alive bits22:");			
 			printbits( alivebits);
 			fprintf( stderr , "\n");			
 			
@@ -302,7 +302,7 @@ int main(int argc, char **argv) {
 				int phy_bit = atoi( argv[3] );				
 				
 				if ( readreg( OFFSET_PTR( mdiobase , MDIO_USERACCESS0_OFFSET) , phy_address , phy_reg ) & (1<<phy_bit) ) {
-					fprintf( stdout ,"1");
+					fprintf( stdout ,"1\n");
 				} else {
 					fprintf( stdout ,"0\n");
 				}
