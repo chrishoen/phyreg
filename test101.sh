@@ -1,8 +1,8 @@
 #! /bin/bash
 
 
-
-if [[ $(phyreg test 18 13) == "1" ]]; then
+test=phyreg test 18 13
+if [[ $(test) == "1" ]]; then
 
 
 	NOW=$(date +%s)
@@ -14,3 +14,4 @@ else
 
 fi
 
+	echo "chkphy:$(test)"
