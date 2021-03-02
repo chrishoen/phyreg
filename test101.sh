@@ -1,7 +1,7 @@
 #! /bin/bash
 
 
-test=phyreg test 18 13
+test=[[ phyreg test 18 13 ]]
 if [[ $(test) == "1" ]]; then
 
 
