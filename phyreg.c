@@ -279,9 +279,9 @@ int main(int argc, char **argv) {
 			
 			unsigned alivebits =  *OFFSET_PTR( mdiobase , MDIO_ALIVE_OFFSET );
 			
-			fprintf( stderr , "Alive bits22:");			
-			printbits( alivebits);
-			fprintf( stderr , "\n");			
+			// chrishoen fprintf( stderr , "Alive bits22:");			
+			// chrishoen printbits( alivebits);
+			// chrishoen fprintf( stderr , "\n");			
 			
 			int phy_address=0; 
 			
@@ -296,17 +296,16 @@ int main(int argc, char **argv) {
 				fprintf( stdout ,"0\n");
 			} else {
 				
-				fprintf( stderr , "First PHY found at address %d.\n" , phy_address);
+				// chrishoen fprintf( stderr , "First PHY found at address %d.\n" , phy_address);
 			
 				int phy_reg = atoi( argv[2] );
 				int phy_bit = atoi( argv[3] );				
 				
 				if ( readreg( OFFSET_PTR( mdiobase , MDIO_USERACCESS0_OFFSET) , phy_address , phy_reg ) & (1<<phy_bit) ) {
-					//fprintf( stdout ,"1\n");
-					fprintf( stderr ,"1\n");
+					fprintf( stdout ,"1\n");
 				} else {
-					//fprintf( stdout ,"0\n");
-					fprintf( stderr ,"0\n");
+					// chrishoen
+					fprintf( stdout ,"0\n");
 				}
 			}
 			
