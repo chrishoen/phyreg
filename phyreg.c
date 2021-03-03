@@ -187,20 +187,20 @@ unsigned short parsebin( const char *s ) {
 // returns register contents (before write if write specified)
 
 int accessreg( volatile unsigned *useraccessaddress , unsigned short phy_address, unsigned short reg , unsigned char writeflag , unsigned writeval ) {
-	fprintf( stderr ,"PHY=%2.02d REG=%2.02d : " , phy_address , reg );
+	// chrishoen fprintf( stderr ,"PHY=%2.02d REG=%2.02d : " , phy_address , reg );
 	
 	if ( *useraccessaddress & MDIO_USERACCESS0_GO_BIT ) {
-		fprintf( stderr ,"WAIT ");
+		// chrishoen fprintf( stderr ,"WAIT ");
 		while (*useraccessaddress & MDIO_USERACCESS0_GO_BIT);
 	} else {
-		fprintf( stderr ,"IDLE ");
+		// chrishoen fprintf( stderr ,"IDLE ");
 	}
 
 	if (writeflag) {
-		fprintf( stderr , "WRITE ");
+		// chrishoen fprintf( stderr , "WRITE ");
 		*useraccessaddress = MDIO_USERACCESS0_GO_BIT | MDIO_USERACCESS0_WRITE_BIT | (reg << 21) | (phy_address << 16) | writeval;	// Send the  command as defined by 14.5.10.11 in TRM		
 	} else {
-		fprintf( stderr , "READ  ");		
+		// chrishoen fprintf( stderr , "READ  ");		
 		*useraccessaddress = MDIO_USERACCESS0_GO_BIT |                              (reg << 21) | (phy_address << 16);			// Send the actual read command as defined by 14.5.10.11 in TRM
 	}
 	
@@ -209,20 +209,20 @@ int accessreg( volatile unsigned *useraccessaddress , unsigned short phy_address
 	while (*useraccessaddress & MDIO_USERACCESS0_GO_BIT);
 	
 	if ( *useraccessaddress & MDIO_USERACCESS0_ACK_BIT ) {
-		fprintf( stderr ,"ACK ");
+		// chrishoen fprintf( stderr ,"ACK ");
 		while (*useraccessaddress & MDIO_USERACCESS0_GO_BIT);
 	} else {
-		fprintf( stderr ,"NAK ");
+		// chrishoen fprintf( stderr ,"NAK ");
 	}
 	
 	int data = 	 *useraccessaddress ;			// THe bottom 16 bits are the read value
 	
-	printbits( data );
+	// chrishoen printbits( data );
 	
 	if (writeflag) {
-		fprintf( stderr , " (WROTE %d) " , writeval );
+		// chrishoen fprintf( stderr , " (WROTE %d) " , writeval );
 	}
-	fprintf( stderr ,"\n");
+	// chrishoen fprintf( stderr ,"\n");
 	
 	return data; 
 	
