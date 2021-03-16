@@ -238,6 +238,7 @@ int  writereg( unsigned *useraccessaddress , unsigned short phy_address, unsigne
 
 int main(int argc, char **argv) {
 	
+    fprintf( stdout ,"LINE101\n");
     
     if(argc ==2 && !strcmp( argv[1] , "-?" )) {
         fprintf( stderr, "\nUsage:phyreg [TEST reg bit] | [address [reg [  data ] ]]\n"
